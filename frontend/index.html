@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Room Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            ▦ <span>Meeting Room<small>BOOKING SYSTEM</small></span>
+        </div>
+
+        <p class="section-label">WORKSPACE</p>
+
+        <nav>
+            <button class="nav-item active" data-page="dashboard"
+                onclick="showPage('dashboard')">▦ Dashboard</button>
+
+            <button class="nav-item" data-page="rooms"
+                onclick="showPage('rooms')">▤ Rooms</button>
+
+            <button class="nav-item" data-page="book"
+                onclick="showPage('book')">▧ Book a Room</button>
+
+            <button class="nav-item" data-page="bookings"
+                onclick="showPage('bookings')">▦ My Bookings</button>
+
+            <button class="nav-item" data-page="history"
+                onclick="showPage('history')">◷ Booking History</button>
+
+            <button class="nav-item"
+                onclick="showProfile()">◉ My Profile</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <strong>Need a space?</strong>
+            <p>Find a room for your next meeting.</p>
+
+            <button class="text-button"
+                onclick="showPage('book')">Book a room →</button>
+
+            <hr>
+
+            <strong>Atharva Pawar</strong>
+            <small>Group C8</small>
+
+            <button class="text-button"
+                onclick="logout()"
+                style="color:#b33;margin-top:10px">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <span>Workspace / <strong id="breadcrumb">Dashboard</strong></span>
+            <span class="online">● System online</span>
+        </header>
+
+        <section id="content"></section>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+
+    <script>
+        document.querySelectorAll("[data-page]").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".nav-item").forEach(item => {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+            });
+        });
+
+        initializeAuth();
+    </script>
+</body>
+</html>
